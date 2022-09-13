@@ -25,6 +25,12 @@ const UserSchema = new Schema(
         ref: "Thought",
       },
     ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   {
     toJSON: {
@@ -42,8 +48,6 @@ UserSchema.virtual("thoughtCount").get(function () {
   );
 });
 
-// create the Pizza model using the PizzaSchema
 const User = model("User", UserSchema);
 
-// export the Pizza model
 module.exports = User;
